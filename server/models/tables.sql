@@ -20,19 +20,17 @@ CREATE TABLE public.prev_registrations (
   FOREIGN KEY (user_id) REFERENCES users (_id)
 );
 
-CREATE TABLE public.politicians (
+CREATE TYPE govt_level AS ENUM (
+  'federal', 'state', 'local'
+);
+
+CREATE TABLE public.elections (
   _id serial NOT NULL,
-  name text NOT NULL,
   office text NOT NULL,
-  date_elected datetime NOT NULL,
   district text NOT NULL,
-  party party,
-  website text,
-  phone integer,
-  email text,
-  election_id serial,
+  date date NOT NULL,
+  level govt_level NOT NULL,
   PRIMARY KEY (_id)
-  FOREIGN KEY (election_id) REFERENCES elections (_id)
 );
 
 CREATE TABLE public.roles (
@@ -42,6 +40,30 @@ CREATE TABLE public.roles (
   PRIMARY KEY (_id)
 );
 
+CREATE TABLE public.donors (
+  _id serial NOT NULL,
+  name text NOT NULL,
+  ideology text,
+  PRIMARY KEY (_id)
+);
+
+
+
+CREATE TABLE public.politicians (
+  _id serial NOT NULL,
+  name text NOT NULL,
+  office text NOT NULL,
+  date_elected date NOT NULL,
+  district text NOT NULL,
+  party party,
+  website text,
+  phone integer,
+  email text,
+  election_id serial,
+  PRIMARY KEY (_id),
+  FOREIGN KEY (election_id) REFERENCES elections (_id)
+);
+
 CREATE TABLE public.pols_roles (
   _id serial NOT NULL,
   pol_id serial NOT NULL,
@@ -49,13 +71,6 @@ CREATE TABLE public.pols_roles (
   PRIMARY KEY (_id), 
   FOREIGN KEY (pol_id) REFERENCES politicians (_id),
   FOREIGN KEY (role_id) REFERENCES roles (_id)
-);
-
-CREATE TABLE public.donors (
-  _id serial NOT NULL,
-  name text NOT NULL,
-  ideology text,
-  PRIMARY KEY (_id)
 );
 
 CREATE TABLE public.donations (
@@ -68,19 +83,6 @@ CREATE TABLE public.donations (
   FOREIGN KEY (donor_id) REFERENCES donors (_id)
 );
 
-CREATE TYPE govt_level AS ENUM (
-  'federal', 'state', 'local'
-);
-
-CREATE TABLE public.elections (
-  _id serial NOT NULL,
-  office text NOT NULL,
-  district text NOT NULL,
-  date datetime NOT NULL,
-  level govt_level NOT NULL,
-  PRIMARY KEY (_id)
-);
-
 CREATE TABLE public.candidates (
   _id serial NOT NULL,
   name text NOT NULL,
@@ -89,6 +91,6 @@ CREATE TABLE public.candidates (
   phone integer,
   email text,
   election_id serial,
-  PRIMARY KEY (_id)
+  PRIMARY KEY (_id),
   FOREIGN KEY (election_id) REFERENCES elections (_id)
 );
