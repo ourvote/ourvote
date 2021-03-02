@@ -2,20 +2,24 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <div className ='navbar'>
-      <div id='logo'>
-        <h5>Logo placeholder</h5>
+    <header className ='navbar'>
+      <div className='left-nav'>
+        <div className='nav-item'>
+          <h5>Logo placeholder</h5>
+        </div>
+        <div className='nav-item'>
+          <h5>About OurVote</h5>
+        </div>
       </div>
-      <div id='about-us'>
-        <h5>About OurVote</h5>
+      <div className='right-nav'>
+        <div className='nav-item'>
+          <h5>Register</h5>
+        </div>
+        <div className='nav-item'>
+          <h5>Login</h5>
+        </div>
       </div>
-      <div id='register'>
-        <h5>Register</h5>
-      </div>
-      <div id='login'>
-        <h5>Login</h5>
-      </div>
-    </div>
+    </header>
   )
 }
 

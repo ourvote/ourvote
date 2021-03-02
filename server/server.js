@@ -6,7 +6,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use(express.static(path.resolve(__dirname, '../build')));
+
+app.use('/build', express.static(path.resolve(__dirname, '../build')));
 app.use(express.static(path.resolve(__dirname, '../client')));
 
 app.listen(PORT, () => console.log(`App is running on ${PORT}... `));
