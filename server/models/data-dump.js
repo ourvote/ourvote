@@ -48,6 +48,23 @@ let dataReturn = ''
 UPDATE  politicians
 SET     fec = 'P80000722'
 WHERE   name = 'Joseph R. Biden';
+Kamala D. Harris
+ Charles E. Schumer
+ Kirsten E. Gillibrand
+ Jerrold Nadler +
+ Andrew M. Cuomo
+ Kathleen C. Hochul
+ Brian P. Kavanagh
+ Deborah Glick
+ Letitia James
+ Thomas P. DiNapoli
+ Cyrus R. Vance, Jr.
+ Gale Brewer
+ Bill de Blasio + 
+ Scott M. Stringer
+ Jumaane D. Williams
+ Margaret S. Chin
+ Joseph R. Biden +
 */
 
 
