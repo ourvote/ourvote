@@ -33,7 +33,7 @@ module.exports = {
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -47,13 +47,14 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    contentBase: path.resolve(__dirname, './client'),
     proxy: {
-      '/api': {
+      '/': {
         target: 'http://localhost:3000/',
         secure: false,
         changeOrigin: true,
       },
     },
-    publicPath: '/',
+    publicPath: '/build/',
   },
 };
