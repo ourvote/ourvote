@@ -6,7 +6,7 @@ const Navbar = () => {
     <header className ='navbar'>
       <div className='left-nav'>
         <div className='nav-item'>
-          <a><img src='../assets/ourvote.png' /></a>
+          <a><img id='logo' src='../assets/ourvote.png'/></a>
         </div>
         <div className='nav-item'>
           <h5><a>About Our Vote</a></h5>

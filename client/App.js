@@ -1,13 +1,11 @@
 import React from 'react';
-import HomePage from './containers/Home.js';
-import SearchResults from './containers/SearchResults'
+import Home from './containers/Home.js';
 
 const App = () => {
   return (
-    <div>
-      <HomePage />
-      <SearchResults />
-    </div>
+    <>
+      <Home />
+    </>
   )
 }
 
