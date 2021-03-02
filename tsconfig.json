@@ -20,5 +20,5 @@
     ]
   },
   "include": ["./client/components/", ""],   // add additional paths to TS sources
-  "exclude": ["node_modules", "./client/components/**.js", "./client/components/**.jsx"]  // add additional paths to JS files to exclude from TS compiling
+  "exclude": ["node_modules", "./client/components/**.js", "./client/components/**.jsx", "./client/**.scss"]  // add additional paths to JS files to exclude from TS compiling
 }
