@@ -26,7 +26,7 @@ module.exports = {
         use: ['ts-loader', {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
         }],
       },
@@ -40,21 +40,18 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'client/index.html',
+      filename: 'index.html',
+      inject: 'body'
     }),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
-    historyApiFallback: true,
-    contentBase: path.resolve(__dirname, './client'),
+    hot: true,
     proxy: {
-      '/': {
-        target: 'http://localhost:3000/',
-        secure: false,
-        changeOrigin: true,
-      },
+      '/': 'http://localhost:3000/',
     },
-    publicPath: '/build/',
+    publicPath: '/build',
   },
 };
