@@ -10,6 +10,10 @@ $Lato: 'Lato', sans-serif;
   font-family: $Lato;
   font-size: 145%;
 
+  #logo {
+    width: 6em;
+  }
+
   .left-nav, .right-nav {
     display: flex;
     flex-direction: row;
