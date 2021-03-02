@@ -1,10 +1,12 @@
 import React from 'react';
-import Navbar from './components/Navbar';
+import HomePage from './containers/Home.js';
+import SearchResults from './containers/SearchResults'
 
 const App = () => {
   return (
     <div>
-      <Navbar />
+      <HomePage />
+      <SearchResults />
     </div>
   )
 }
