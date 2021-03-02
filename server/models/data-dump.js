@@ -32,6 +32,7 @@ const assembleSql = (obj) => {
  return str;
 }
 
+
 const civicKey = 'AIzaSyAxaluH_KPljnz_Sj2QjajtpS_iFSZbxJY';
 let address = '68 White St 5th floor, New York, NY 10013' // Codesmith office 
 encodedAddress = encodeCode(address);
@@ -43,26 +44,18 @@ const paramString = constructURI(params);
 
 let dataReturn = ''
 
+/*
+UPDATE  politicians
+SET     fec = 'P80000722'
+WHERE   name = 'Joseph R. Biden';
+*/
+
+
+/*
 fetch('https://www.googleapis.com/civicinfo/v2/representatives?' + paramString)
   .then(res => res.json())
   .then(data => {
     dataReturn = assembleSql(data)
-
-    // const query = {
-    //   text: `INSERT INTO politicians (
-    //     office, 
-    //     division, 
-    //     name,   
-    //     party,  
-    //     photo,  
-    //     website,
-    //     phone,
-    //     email
-    //   ) 
-    //   VALUES ($1)
-    //   RETURNING *;`,
-    //   values: [dataReturn],
-    // };
 
     const query = `INSERT INTO politicians (
       office, 
@@ -83,7 +76,7 @@ fetch('https://www.googleapis.com/civicinfo/v2/representatives?' + paramString)
     })
   })
   .catch(err => console.error('Error querying Google Civic Info API.', err));
-
+*/
 
 
 /*
@@ -148,19 +141,4 @@ fetch('https://www.googleapis.com/civicinfo/v2/representatives?' + paramString)
     <string variable>
   )
   RETURNING *;
-*/
-
-
-/*
-one idea:
--- input available: array of officials, array of offices
-
--- output needed: string in this format:
-"(__, __,), (__, __), (__, __)" etc.
-
--- values need to be in same order as keys above in "INSERT INTO" section
-
--- can build an array of arrays
--- join subarray using ', ' in between elems
--- join outer array using ( ), around subarrays
 */
