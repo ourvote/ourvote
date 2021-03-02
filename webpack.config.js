@@ -36,34 +36,32 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
         },
       },
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'client/index.html',
+      filename: 'index.html',
+      inject: 'body'
     }),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
-    historyApiFallback: true,
+    hot: true,
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000/',
-        secure: false,
-        changeOrigin: true,
-      },
+      '/': 'http://localhost:3000/',
     },
-    publicPath: '/',
+    publicPath: '/build',
   },
 };

@@ -3,7 +3,7 @@
 // import _ from './dotenv.js';
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App.js';
+import App from './App.js';
 
 import './styles/index.scss';
 // dotenv.config();
