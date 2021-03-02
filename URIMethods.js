@@ -1,52 +1,51 @@
-function parseCode(encodedCode){
-  const replacements = {
-    "%24": "$",
-    "%26": "&",
-    "%2B": "+",
-    "%2C": ",",
-    "%2F": "/",
-    "%3A": ":",
-    "%3B": ";",
-    "%3D": "=",
-    "%3F": "?",
-    "%40": "@"
-  }
-  const toReplaceArray = Object.keys(replacements);
-
-  for (let i = 0; i < toReplaceArray.length; i++) {
-    while (encodedCode.includes(toReplaceArray[i])) {
-      encodedCode = encodedCode.replace(toReplaceArray[i], replacements[toReplaceArray[i]]);
-    }
-  }
-
-  return encodedCode; 
-};
-
-function encodeCode(decodedCode){
-  const replacements = {
-    "$" : "%24",
-    "&" : "%26",
-    "+" : "%2B",
-    "," : "%2C",
-    "/" : "%2F",
-    ":" : "%3A",
-    ";" : "%3B",
-    "=" : "%3D",
-    "?" : "%3F",
-    "@" : "%40"
-  }
-  const toReplaceArray = Object.keys(replacements);
-
-  for (let i = 0; i < toReplaceArray.length; i++) {
-    while (decodedCode.includes(toReplaceArray[i])) {
-      decodedCode = decodedCode.replace(toReplaceArray[i], replacements[toReplaceArray[i]]);
-    }
-  }
-
-  return decodedCode; 
-};
-
 module.exports = {
+  parseCode(encodedCode){
+    const replacements = {
+      "%24": "$",
+      "%26": "&",
+      "%2B": "+",
+      "%2C": ",",
+      "%2F": "/",
+      "%3A": ":",
+      "%3B": ";",
+      "%3D": "=",
+      "%3F": "?",
+      "%40": "@"
+    }
+    const toReplaceArray = Object.keys(replacements);
+
+    for (let i = 0; i < toReplaceArray.length; i++) {
+      while (encodedCode.includes(toReplaceArray[i])) {
+        encodedCode = encodedCode.replace(toReplaceArray[i], replacements[toReplaceArray[i]]);
+      }
+    }
+
+    return encodedCode; 
+  },
+
+  encodeCode(decodedCode){
+    const replacements = {
+      "$" : "%24",
+      "&" : "%26",
+      "+" : "%2B",
+      "," : "%2C",
+      "/" : "%2F",
+      ":" : "%3A",
+      ";" : "%3B",
+      "=" : "%3D",
+      "?" : "%3F",
+      "@" : "%40"
+    }
+    const toReplaceArray = Object.keys(replacements);
+
+    for (let i = 0; i < toReplaceArray.length; i++) {
+      while (decodedCode.includes(toReplaceArray[i])) {
+        decodedCode = decodedCode.replace(toReplaceArray[i], replacements[toReplaceArray[i]]);
+      }
+    }
+
+    return decodedCode; 
+  },
 
   constructURI: (options, skip) => {
     const paramArray = Object.entries(options);
@@ -67,7 +66,7 @@ module.exports = {
       paramString = paramString.slice(0, -1);
     }
   
-    return encodeCode(paramString);
+    return paramString;
   }
 
 }
