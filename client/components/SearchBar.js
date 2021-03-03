@@ -1,18 +1,11 @@
-import React, { useReducer, useState, useContext } from 'react';
-import { initialHomeState, homeReducer } from '../state/reducers';
+import React, { useState, useContext } from 'react';
 import { HomeContext } from '../state/contexts';
-// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-// import 'react-tabs/style/react-tabs.css';
-
-// on form submit:
-// send a GET request to '/politicians/' with the user-entered address concatenated on
 
 const SearchBar = () => {
- const { homeDispatch } = useContext(HomeContext);
+  const { homeDispatch } = useContext(HomeContext);
   const [address, setAddress] = useState('');
 
   const onChange = (e) => {
-    console.log('Changing state... New value:', e.target.value);
     setAddress(e.target.value);
   }
 
@@ -20,7 +13,7 @@ const SearchBar = () => {
     if (e.key === 'Enter' || e.type === 'click') {
       e.preventDefault(); // prevent page refesh
     }
-    console.log('Form state:', address);
+
     // don't submit an empty string
     if (!address) return;
 
@@ -29,17 +22,16 @@ const SearchBar = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        address,
-      })
+      body: JSON.stringify({ address }),
     })
     .then(res => res.json())
     .then(data => {
-      console.log('Data from POST to /politicians:', data);
+      // console.log('Data from POST to /politicians:', data);
+      setAddress('');
       homeDispatch({
         type: 'OPEN_SEARCH_RESULTS',
         payload: data
-       })
+      });
     })
     .catch(err => console.error('ERROR getting politicians:', err));
   }
