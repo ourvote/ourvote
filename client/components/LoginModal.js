@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactModalLogin from "react-modal-login";
-
+import {parseCode, encodeCode, constructURI} from "../../URIMethods"
 import { facebookConfig, googleConfig } from "./social-config";
 
 const LoginModal = () => {
@@ -19,7 +19,27 @@ const LoginModal = () => {
 
   const onLoginSuccess = (method, response) => {
     console.log("logged successfully with " + method);
+    // console.log('res', response);
+    // const platform = checkProvider(response);
+    // const token = getToken(platform, response);
+    // finalFetch(platform, token);
+    closeModal();
   };
+
+  // const checkProvider = (response) => {
+  //   if(!response.authResponse) return response.idpId;
+  //   else return response.authResponse.graphDomain;
+  // }
+
+  // const getToken = (platform, response) => {
+  //   if(platform === 'facebook'){
+  //     return response.authResponse.accessToken;
+  //   } else if(platform === 'google') {
+  //     return response.access_token;
+  //   } else {
+  //     console.log('user not authenticated by facebook or google in getToken')
+  //   }  
+  // }
 
   const onLoginFail = (method, response) => {
     console.log("logging failed with " + method);
@@ -38,6 +58,32 @@ const LoginModal = () => {
     setError(null);
   };
 
+  // const finalFetch = (platform, token) => {
+  //   // check whether the response came from google or fb
+  //   // https://cors-anywhere.herokuapp.com/
+  //   const fbEndpoint = 'https://graph.facebook.com/debug_token?';
+  //   const googleEndpoint = 'https://www.googleapis.com/auth/userinfo.profile';
+  //   const fbOptions = {
+  //     input_token: token,
+  //     access_token: '468118507553575|20afc1e1e85ed9791581ae38926a7eb0'
+  //   };
+  //   const googleOptions = {
+  //     headers: { 'Authorization': 'Bearer '+ token }
+  //   }
+  //   if (platform === 'google') {
+  //     fetch(googleEndpoint, googleOptions)
+  //     .then(data => data.text())
+  //     .then(res => console.log('data fetched from google', res))
+  //     .catch(err => console.log('error in addl fetch: ', err));
+  //   } else if (platform === 'facebook') {
+  //     fetch(fbEndpoint + constructURI(fbOptions))
+  //     .then(data => data.text())
+  //     .then(res => console.log('data fetched from facebook', res))
+  //     .catch(err => console.log('error in addl fetch: ', err));
+  //   } else {
+  //     console.log('user not authenticated by google or facebook')
+  //   }
+  // }
 
   return (
     <div>

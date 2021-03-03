@@ -8,7 +8,6 @@ import App from './App.js';
 import './styles/index.scss';
 // dotenv.config();
 
-
 render(
     <App />,
   document.getElementById('root')

@@ -1,5 +1,5 @@
 const facebook = {
-  appId: "YOUR FB APP ID GOES HERE",
+  appId: "468118507553575",
   cookie: true,
   xfbml: true,
   version: "v3.2",
