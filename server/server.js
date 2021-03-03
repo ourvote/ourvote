@@ -14,4 +14,20 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 app.use('/users', authRouter);
 app.use('/politicians', searchRouter);
 
+//ERROR HANDLING
+app.use((err, req, res, next) => {
+  const error = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: {
+      err: 'A server error occured',
+    },
+  };
+  error.message = err.message;
+  if (err.status) error.status = err.status;
+
+  console.log('SERVER ERROR: ', error.message);
+  res.status(error.status).send(error.message);
+});
+
 app.listen(PORT, () => console.log(`App is running on ${PORT}... `));

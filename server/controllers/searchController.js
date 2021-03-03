@@ -7,7 +7,7 @@ searchController.getAll = (req, res, next) => {
   console.log('Getting all politicians.');
 
   db.query('SELECT * FROM politicians', (error, response) => {
-    if (error) return next(err);
+    if (error) return next(error);
 
     res.locals = response.rows;
     return next();
@@ -45,11 +45,10 @@ const assembleSql = (obj) => {
 
 searchController.getByAddress = (req, res, next) => {
   console.log('Getting by address. Req.body:', req.body);
-  console.log('Getting by address. API key:', process.env.CIVIC_INFO_KEY);
 
   /*
   const {address} = req.body;
-  
+
   const params = {
     key: process.env.CIVIC_INFO_KEY,
     address: encodeCode(address)
@@ -84,7 +83,7 @@ searchController.getByAddress = (req, res, next) => {
 
   // placeholder for now: get all politicians in database
   db.query('SELECT * FROM politicians', (error, response) => {
-    if (error) return next(err);
+    if (error) return next(error);
 
     res.locals = response.rows;
     return next();
