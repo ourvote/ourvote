@@ -36,13 +36,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'client/index.html',
-      filename: 'index.html',
-      inject: 'body'
-    }),
-  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
