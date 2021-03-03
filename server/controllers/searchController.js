@@ -113,7 +113,10 @@ searchController.upsertByAddress = (req, res, next) => {
           return next(error);
         }
         
-        console.log('New politicians added to database:', response.rows);
+        if (response.rows.length) {
+          console.log('New politicians added to database:', response.rows);
+        }
+        
         return next();
       })
     })

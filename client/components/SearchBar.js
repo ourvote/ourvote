@@ -9,7 +9,6 @@ const SearchBar = () => {
   const [address, setAddress] = useState('');
 
   const onChange = (e) => {
-    console.log('Changing state... New value:', e.target.value);
     setAddress(e.target.value);
   }
 
@@ -17,22 +16,23 @@ const SearchBar = () => {
     if (e.key === 'Enter' || e.type === 'click') {
       e.preventDefault(); // prevent page refesh
     }
-    console.log('Form state:', address);
+
     // don't submit an empty string
     if (!address) return;
+    // const body = JSON.stringify({ address });
+    // setAddress('');
 
     fetch('/politicians/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        address,
-      })
+      body: JSON.stringify({ address }),
     })
-    .then(res => res.json)
+    .then(res => res.json())
     .then(data => {
-      console.log('Data from POST to /politicians:', data);
+      // console.log('Data from POST to /politicians:', data);
+      setAddress('');
     })
     .catch(err => console.error('ERROR getting politicians:', err));
   }
@@ -49,7 +49,7 @@ const SearchBar = () => {
             placeholder="Home address..."
             onChange={onChange} />
           </label>
-          <button className="searchSubmit" onSubmit={onSubmit}>Search</button>
+          <button className="searchSubmit" onClick={onSubmit}>Search</button>
         </form>
       </div>
     </div>
