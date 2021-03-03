@@ -6,7 +6,7 @@ CREATE TABLE public.users (
   _id serial NOT NULL,
   name text NOT NULL,
   address text NOT NULL,
-  party party,
+  party text,
   password varchar(30) NOT NULL,
   PRIMARY KEY (_id)
 );
@@ -14,7 +14,7 @@ CREATE TABLE public.users (
 CREATE TABLE public.prev_registrations (
   _id serial NOT NULL,
   address text NOT NULL,
-  party party,
+  party text,
   user_id serial NOT NULL,
   PRIMARY KEY (_id), 
   FOREIGN KEY (user_id) REFERENCES users (_id)
@@ -53,13 +53,16 @@ CREATE TABLE public.politicians (
   _id serial NOT NULL,
   name text NOT NULL,
   office text NOT NULL,
-  date_elected date NOT NULL,
-  district text NOT NULL,
-  party party,
+  date_elected date,
+  division text NOT NULL,
+  party text,
   website text,
-  phone integer,
+  phone text,
   email text,
-  election_id serial,
+  election_id integer,
+  photo text,
+  fec varchar(9),
+  crp varchar(9),
   PRIMARY KEY (_id),
   FOREIGN KEY (election_id) REFERENCES elections (_id)
 );
@@ -86,7 +89,7 @@ CREATE TABLE public.donations (
 CREATE TABLE public.candidates (
   _id serial NOT NULL,
   name text NOT NULL,
-  party party,
+  party text,
   website text,
   phone integer,
   email text,
