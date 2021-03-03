@@ -19,13 +19,6 @@ const SearchBar = () => {
     if (!address) return;
     const addressAscii = encodeCode(address);
 
-    // fetch('/politicians/', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ address }),
-    // })
     fetch('/politicians/?address=' + addressAscii, {
       method: 'PUT',
       headers: {
@@ -34,7 +27,6 @@ const SearchBar = () => {
     })
     .then(res => res.json())
     .then(data => {
-      // console.log('Data from POST to /politicians:', data);
       setAddress('');
       homeDispatch({
         type: 'OPEN_SEARCH_RESULTS',
