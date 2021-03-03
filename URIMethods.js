@@ -1,5 +1,5 @@
 module.exports = {
-  parseCode(encodedCode){
+  parseCode: (encodedCode) => {
     const replacements = {
       "%24": "$",
       "%26": "&",
@@ -23,7 +23,7 @@ module.exports = {
     return encodedCode; 
   },
 
-  encodeCode(decodedCode){
+  encodeCode: (decodedCode) => {
     const replacements = {
       "$" : "%24",
       "&" : "%26",
