@@ -9,7 +9,7 @@ const Politician = ({ name, office, division, party, website, phone, email, phot
         <h2 className="office" >Office: {office}</h2>
         <h3 className="division" >Division: {division}</h3>
         <h3 className="party" >Political Party: {party}</h3>
-        <h4 className="contact" >Website: <a src={website}>{website}</a></h4>
+        <h4 className="contact" >Website: <a href={website}>{website || 'None provided'}</a></h4>
         <h4 className="contact" >Phone: {phone}</h4>
         <h4 className="contact" >Email: {email}</h4>
       </div>
