@@ -36,20 +36,15 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'client/index.html',
-      filename: 'index.html',
-      inject: 'body'
-    }),
-  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
     hot: true,
     proxy: {
-      '/': 'http://localhost:3000/',
+      '/': 'http://localhost:3000',
+      '/*': 'http://localhost:3000',
+      '/politicians': 'http://localhost:3000',
     },
     publicPath: '/build',
     headers: {

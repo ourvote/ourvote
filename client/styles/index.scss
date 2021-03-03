@@ -1,4 +1,7 @@
 @import './_navbar.scss';
+@import './_politicans.scss';
+@import './_aboutUs.scss';
+@import './_searchBar.scss';
 
 body {
   height: 300vh;
@@ -8,11 +11,10 @@ body {
   padding: 0;
 }
 
-.formContainer {
-  width: 100%;
+.homeContents {
+  display: flex;
+  justify-content: center;
 }
 
-.form {
-  text-align: center;
 
-}
+
