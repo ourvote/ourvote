@@ -123,12 +123,12 @@ searchController.upsertByAddress = (req, res, next) => {
 // given an array of names, return an array of politicans from the database
 searchController.getByNames = (req, res, next) => { 
   const namesListSql = arrayToSqlList(res.locals.names);
-  console.log('namesListSql', namesListSql);
   
   const query = 'SELECT * FROM politicians WHERE name IN ' + namesListSql;
   db.query(query, (error, response) => {
     if (error) return next(error);
 
+    // console.log('Result of getting by address:', response.rows);
     res.locals.pols = response.rows;
     return next();
   });  
