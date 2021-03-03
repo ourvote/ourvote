@@ -28,7 +28,9 @@ const Home = () => {
     }}>
       <Navbar />
       <SearchBar />
-     {homeState.aboutUs ? <AboutUs /> : <SearchResults /> }
+        <div className='homeContents'>
+         {homeState.aboutUs ? <AboutUs /> : <SearchResults /> }
+       </div>
     </HomeContext.Provider>
   )
 }
