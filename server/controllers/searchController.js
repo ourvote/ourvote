@@ -46,6 +46,7 @@ const assembleSql = (obj) => {
 searchController.getByAddress = (req, res, next) => {
   console.log('Getting by address. Req.body:', req.body);
 
+  // TODO: Decide how to support searching by address.
   /*
   const {address} = req.body;
 
