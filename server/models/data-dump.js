@@ -44,6 +44,10 @@ const paramString = constructURI(params);
 
 let dataReturn = ''
 
+fetch('https://api.maplight.org/maplight-api/fec/contributions?candidate_name=Hillary Clinton')
+  .then(res => res.json())
+  .then(data => console.log('data.data: ', data.data))
+  .catch(err => console.error('Error querying Google Civic Info API.', err));
 /*
 UPDATE  politicians
 SET     fec = 'P80000722'
@@ -67,33 +71,32 @@ Kamala D. Harris
  Joseph R. Biden +
 */
 
+// fetch('https://www.googleapis.com/civicinfo/v2/representatives?' + paramString)
+//   .then(res => res.json())
+//   .then(data => {
+//     dataReturn = assembleSql(data)
 
-/*
-fetch('https://www.googleapis.com/civicinfo/v2/representatives?' + paramString)
-  .then(res => res.json())
-  .then(data => {
-    dataReturn = assembleSql(data)
-
-    const query = `INSERT INTO politicians (
-      office, 
-      division, 
-      name,   
-      party,  
-      photo,  
-      website,
-      phone,
-      email
-    ) 
-    VALUES
-    ` + dataReturn + 'RETURNING *;'
+//     const query = `INSERT INTO politicians (
+//       office, 
+//       division, 
+//       name,   
+//       party,  
+//       photo,  
+//       website,
+//       phone,
+//       email
+//     ) 
+//     VALUES
+//     ` + dataReturn + 'RETURNING *;'
   
-    db.query(query, (err, res) => {
-      if (err) console.log('ERROR performing data insertion.', err);
-      else console.log('Result of data insertion:', res.rows);
-    })
-  })
-  .catch(err => console.error('Error querying Google Civic Info API.', err));
-*/
+//     db.query(query, (err, res) => {
+//       if (err) console.log('ERROR performing data insertion.', err);
+//       else console.log('Result of data insertion:', res.rows);
+//     })
+//   })
+//   .catch(err => console.error('Error querying Google Civic Info API.', err));
+
+
 
 
 /*
