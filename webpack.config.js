@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
 module.exports = {
   entry: './client/index.js',
   output: {
@@ -20,18 +19,8 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   test: /\.(t|j)sx?$/,
-      //   exclude: /node_modules/,
-      //   use: ['ts-loader', {
-      //     loader: 'babel-loader',
-      //     options: {
-      //       presets: ['@babel/preset-env', '@babel/preset-react'],
-      //     },
-      //   }],
-      // },
       {
-        test: /\.jsx?$/,
+        test: /\.(t|j)sx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -43,7 +32,7 @@ module.exports = {
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader','sass-loader'],
       },
     ],
   },

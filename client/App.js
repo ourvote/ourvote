@@ -1,13 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import Navbar from './components/Navbar';
+import React from 'react';
+import Home from './containers/Home.js';
 
 const App = () => {
- return (
-    <div>
-      <h1>Hi from App!</h1>
-      <p>API Call: {JSON.stringify(query)}</p>
-      <Navbar />
-    </div>
+  return (
+    <>
+      <Home />
+    </>
   )
 }
 
