@@ -42,7 +42,9 @@ module.exports = {
   devServer: {
     hot: true,
     proxy: {
-      '/': 'http://localhost:3000/',
+      '/': 'http://localhost:3000',
+      '/*': 'http://localhost:3000',
+      '/politicians': 'http://localhost:3000',
     },
     publicPath: '/build',
   },

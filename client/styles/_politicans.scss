@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+$Lato: 'Lato', sans-serif;
+
+.politician {
+  display: flex;
+
+  justify-content: center;
+  padding: 6%;
+  font-family: $Lato;
+
+  .politicianImg {
+    margin-top: 5%;
+
+    img {
+      border-radius: 50%;
+      height: 200px;
+    }
+  }
+
+  .politicianStats {
+    padding-left: 10%;
+    line-height: 0.5rem;
+  }
+
+}
