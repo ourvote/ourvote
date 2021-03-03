@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { HomeContext } from '../state/contexts';
+const { constructURI, encodeCode } = require('../../URIMethods.js');
 
 const SearchBar = () => {
   const { homeDispatch } = useContext(HomeContext);
@@ -16,13 +17,20 @@ const SearchBar = () => {
 
     // don't submit an empty string
     if (!address) return;
+    const addressAscii = encodeCode(address);
 
-    fetch('/politicians/', {
-      method: 'POST',
+    // fetch('/politicians/', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ address }),
+    // })
+    fetch('/politicians/?address=' + addressAscii, {
+      method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ address }),
     })
     .then(res => res.json())
     .then(data => {

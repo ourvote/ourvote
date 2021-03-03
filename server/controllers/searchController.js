@@ -29,7 +29,7 @@ const arrayToSqlList = array => {
 const assembleSql = (obj) => {
   const {offices, officials} = obj;
   let str = '';
-  
+
   // iterate over offices
   for(let i = 0; i < offices.length; i += 1){
     // iterate over officials who hold that office
@@ -70,14 +70,16 @@ searchController.getAll = (req, res, next) => {
 // If record already exists, don't update or duplicate it; do nothing.
 // TODO: Decide which fields (all?) we might want to update for records that already exist.
 searchController.upsertByAddress = (req, res, next) => {
-  console.log('Upserting by address. Req.body:', req.body);
-  const {address} = req.body;
+  // console.log('Upserting by address. Req.body:', req.body);
+  console.log('Upserting by address. Req.query:', req.query);
+  // const {address} = req.body;
+  const {address} = req.query;
 
   // query external API for politicians at that address
   // insert those politicians into our database if they aren't already present
   const params = {
     key: process.env.CIVIC_INFO_KEY,
-    address: encodeCode(address)
+    address,
   }
   const paramString = constructURI(params);
 
@@ -85,7 +87,6 @@ searchController.upsertByAddress = (req, res, next) => {
     .then(res => res.json())
     .then(data => {
       // get list of politician names off data
-      // NOTE: We could, at this step, collect all the info included in Civic Info API for each politician and send that data set on the response, rather than querying the database again with a SELECT operation in getByNames(). However, building a route that includes a SELECT operation enables us to easily pull in more data from more external APIs later.
       const names = [];
       data.officials.forEach(official => names.push(official.name));
       res.locals.names = names;
@@ -93,30 +94,30 @@ searchController.upsertByAddress = (req, res, next) => {
       const polsInfo = assembleSql(data);
       // inserting with ON CONFLICT clause to prevent duplicate records
       const query = `INSERT INTO politicians (
-        office, 
-        division, 
-        name,   
-        party,  
-        photo,  
+        office,
+        division,
+        name,
+        party,
+        photo,
         website,
         phone,
         email
-      ) 
+      )
       VALUES
       ` + polsInfo + `
       ON CONFLICT (name) DO NOTHING
       RETURNING name;`;
-    
+
       db.query(query, (error, response) => {
         if (error) {
           console.log('Database error.', error);
           return next(error);
         }
-        
+
         if (response.rows.length) {
           console.log('New politicians added to database:', response.rows);
         }
-        
+
         return next();
       })
     })
@@ -124,17 +125,17 @@ searchController.upsertByAddress = (req, res, next) => {
 };
 
 // given an array of names, return an array of politicans from the database
-searchController.getByNames = (req, res, next) => { 
+searchController.getByNames = (req, res, next) => {
   const namesListSql = arrayToSqlList(res.locals.names);
-  
+
   const query = 'SELECT * FROM politicians WHERE name IN ' + namesListSql;
   db.query(query, (error, response) => {
     if (error) return next(error);
 
-    // console.log('Result of getting by address:', response.rows);
+    console.log('Result of getting by address:', response.rows);
     res.locals.pols = response.rows;
     return next();
-  });  
+  });
 };
 
 module.exports = searchController;

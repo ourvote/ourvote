@@ -7,10 +7,11 @@ router.get('/',
   (req, res) => res.status(200).json(res.locals.pols),
 );
 
-router.post('/',
+router.put('/',
   searchController.upsertByAddress,
   searchController.getByNames,
-  (req, res) => res.status(200).json(res.locals.pols),
+  (req, res) => {
+    res.status(200).json(res.locals.pols)},
 );
 
 module.exports = router;
