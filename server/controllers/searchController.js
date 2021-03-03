@@ -13,6 +13,18 @@ const escapeQuotes = (str) => {
   return str;
 };
 
+const arrayToSqlList = array => {
+  const values = array.reduce((accm, curr) => {
+    accm += '\'' + escapeQuotes(curr) + '\', ';
+    return accm;
+  }, '');
+
+  // slice off trailing comma and space
+  // wrap list of values in parentheses
+  return '(' + values.slice(0, -2) + ')';
+}
+
+// TODO: refactor assembleSQL to use arrayToSqlList
 // Given the output of a query to the Google Civic Info API, deconstruct off of it the array of political offices and array of political officials. Produce a SQL prepared statement containing the relevant values from each to insert into the politicans table.
 const assembleSql = (obj) => {
   const {offices, officials} = obj;
@@ -110,10 +122,10 @@ searchController.upsertByAddress = (req, res, next) => {
 
 // given an array of names, return an array of politicans from the database
 searchController.getByNames = (req, res, next) => { 
-  const {names} = res.locals;
+  const namesListSql = arrayToSqlList(res.locals.names);
+  console.log('namesListSql', namesListSql);
   
-  // TODO: sql query where condition is that value exists on a list of values
-  const query = 'SELECT * FROM politicians';
+  const query = 'SELECT * FROM politicians WHERE name IN ' + namesListSql;
   db.query(query, (error, response) => {
     if (error) return next(error);
 

@@ -4,13 +4,13 @@ const router = express.Router();
 
 router.get('/',
   searchController.getAll,
-  (req, res) => res.status(200).json(res.locals),
+  (req, res) => res.status(200).json(res.locals.pols),
 );
 
 router.post('/',
   searchController.upsertByAddress,
-  // searchController.getByNames,
-  (req, res) => res.status(200).json(res.locals),
+  searchController.getByNames,
+  (req, res) => res.status(200).json(res.locals.pols),
 );
 
 module.exports = router;
