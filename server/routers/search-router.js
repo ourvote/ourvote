@@ -8,7 +8,8 @@ router.get('/',
 );
 
 router.post('/',
-  searchController.getByAddress,
+  searchController.upsertByAddress,
+  // searchController.getByNames,
   (req, res) => res.status(200).json(res.locals),
 );
 
