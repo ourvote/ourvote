@@ -1,5 +1,4 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
 
-export const generalState = createContext();
-export const searchResults = createContext();
+export const HomeContext = createContext();
