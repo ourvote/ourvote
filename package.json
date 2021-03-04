@@ -5,21 +5,24 @@
   "main": "./client/index.js",
   "scripts": {
     "tsc": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test jest --verbose",
     "start": "NODE_ENV=production webpack & node -r dotenv/config server/server.js",
     "dev": "NODE_ENV=development webpack serve --open --hot & nodemon -r dotenv/config server/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emilykrebs/ourvote.git"
+    "url": "git+https://github.com/ourvote/ourvote.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/emilykrebs/ourvote/issues"
+    "url": "https://github.com/ourvote/ourvote/issues"
   },
-  "homepage": "https://github.com/emilykrebs/ourvote#readme",
+  "homepage": "https://github.com/ourvote/ourvote#readme",
+  "jest": {
+    "globalSetup": "./jest-setup.js",
+    "globalTeardown": "./jest-teardown.js"
+  },
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.8",
@@ -28,8 +31,6 @@
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
     "babel-loader": "^8.2.2",
-    "concurrently": "^6.0.0",
-    "cross-env": "^7.0.3",
     "css-loader": "^5.1.1",
     "enzyme": "^3.11.0",
     "eslint": "^7.21.0",
