@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 $Lato: 'Lato', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+$Bungee: 'Bungee', cursive;
+
+
+
+.politicianContainer {
+  padding-top: 10%;
+}
 
 
   .politician {
@@ -11,7 +19,10 @@ $Lato: 'Lato', sans-serif;
       "politicianImg politicianStats";
     font-family: $Lato;
     padding: 4%;
-    // justify-items: center;
+    margin-top: 5%;
+    border-radius: 16px;
+    background-color: rgba(0,166,251, 0.4);
+
 
     .politicianImg {
       grid-area: 'politicianImg';
@@ -29,7 +40,13 @@ $Lato: 'Lato', sans-serif;
     }
 
     .politicianStats {
+      margin-top: 5%;
       grid-area: 'politicianStats';
-      line-height: 0.5rem;
+      line-height: 1rem;
+      overflow-wrap: break-word;
+
+      .header {
+        font-family: $Bungee;
+      }
     }
   }

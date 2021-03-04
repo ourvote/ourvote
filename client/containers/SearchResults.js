@@ -16,7 +16,7 @@ const SearchResults = () => {
   }
 
   return  (
-    <div className="policitianContainer">
+    <div className="politicianContainer">
       {politicians}
     </ div>
   )
