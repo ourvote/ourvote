@@ -1,3 +1,3 @@
 module.exports = async (globalConfig) => {
-  testServer.close();
+  globalConfig.testServer.close();
 };

@@ -70,10 +70,8 @@ searchController.getAll = (req, res, next) => {
 // If record already exists, don't update or duplicate it; do nothing.
 // TODO: Decide which fields (all?) we might want to update for records that already exist.
 searchController.upsertByAddress = (req, res, next) => {
-  // console.log('Upserting by address. Req.body:', req.body);
-  console.log('Upserting by address. Req.query:', req.query);
-  // const {address} = req.body;
   const {address} = req.query;
+  console.log(`Upserting by address: ${address}`);
 
   // query external API for politicians at that address
   // insert those politicians into our database if they aren't already present
@@ -132,7 +130,6 @@ searchController.getByNames = (req, res, next) => {
   db.query(query, (error, response) => {
     if (error) return next(error);
 
-    console.log('Result of getting by address:', response.rows);
     res.locals.pols = response.rows;
     return next();
   });
