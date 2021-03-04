@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import LoginModal from './LoginModal';
+import UserProfile from './UserProfile';
+import { HomeContext } from '../state/contexts';
 
 const Navbar = () => {
+  const { homeState, homeDispatch } = useContext(HomeContext);
+
   return (
     <header className ='navbar'>
       <div className='left-nav'>
-        <div className='nav-item'>
+        <div className='nav-logo'>
           <a><img id='logo' src='../assets/ourvote.png'/></a>
         </div>
         <div className='nav-item'>
@@ -13,7 +17,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className='right-nav'>
-          <LoginModal />
+          {homeState.loggedIn ? <UserProfile/> : <LoginModal />}
       </div>
     </header>
   )

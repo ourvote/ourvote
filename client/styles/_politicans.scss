@@ -1,25 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 $Lato: 'Lato', sans-serif;
 
-.politician {
-  display: flex;
 
-  justify-content: center;
-  padding: 6%;
-  font-family: $Lato;
+  .politician {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "politicianImg politicianStats";
+    font-family: $Lato;
+    padding: 4%;
+    // justify-items: center;
 
-  .politicianImg {
-    margin-top: 5%;
+    .politicianImg {
+      grid-area: 'politicianImg';
+      margin-top: 5%;
+      text-align: right;
+      margin-right: 2rem;
 
-    img {
-      border-radius: 50%;
-      height: 200px;
+
+      img {
+        border-radius: 50%;
+        height: 200px;
+        margin-right: 0px;
+        align-self: end;
+      }
+    }
+
+    .politicianStats {
+      grid-area: 'politicianStats';
+      line-height: 0.5rem;
     }
   }
-
-  .politicianStats {
-    padding-left: 10%;
-    line-height: 0.5rem;
-  }
-
-}
