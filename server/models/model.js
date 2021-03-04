@@ -1,10 +1,10 @@
 const { Pool } = require('pg');
 
 let connectionString = '';
-if (process.env.NODE_ENV = 'test') {
-  connectionString = process.env.TEST_DB;
-}
-else connectionString = process.env.DB_URI;
+// if (process.env.NODE_ENV = 'test') {
+//   connectionString = process.env.TEST_DB;
+// }
+connectionString = process.env.DB_URI;
 
 const pool = new Pool({
   connectionString,
