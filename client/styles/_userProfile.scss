@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+$Lato: 'Lato', sans-serif;
+
+$primary: #00a6fb;
+
+#userInfo {
+  font-family: $Lato;
+  font-size: 75%;
+  width: 140%;
+  margin-right: 100px;
+  margin-top: 10px;
+
+  .userButton {
+    border-radius: 28px;
+    background-color: rgba(0,166,251, 0.6);
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    vertical-align: middle;
+    border: none;
+    height: 25%;
+    margin: 4px;
+  }
+
+  .userInput {
+    transition: box-shadow .3s;
+    border-radius: 28px;
+    width: 275px;
+    margin: 4px;
+    padding: 5px;
+    border: 1px solid lightgray;
+
+    &:hover {
+      cursor: text;
+      box-shadow: 0 0 11px rgba(33,33,33,.2);
+    }
+  }
+
+}

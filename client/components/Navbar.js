@@ -21,9 +21,6 @@ const Navbar = () => {
         <div className='nav-logo'>
           <a onClick={returnHome}><img id='logo' src='../assets/ourvote.png'/></a>
         </div>
-        <div className='nav-item'>
-          <h5><a href='#aboutUs'>About Our Vote</a></h5>
-        </div>
       </div>
       <div className='right-nav'>
           {homeState.loggedIn ? <UserProfile/> : <LoginModal />}
@@ -33,3 +30,10 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+/*
+  <div className='nav-item'>
+          <h5><a href='#aboutUs'>About Our Vote</a></h5>
+        </div>
+
+*/ 

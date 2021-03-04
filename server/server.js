@@ -42,4 +42,6 @@ app.use((err, req, res, next) => {
   res.status(error.status).send(error.message);
 });
 
-app.listen(PORT, () => console.log(`App is running on ${PORT}... `));
+app.listen(PORT, () => console.log(`App is running on ${PORT}... NODE_ENV=${process.env.NODE_ENV}`));
+
+module.exports = app;

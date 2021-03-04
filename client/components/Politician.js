@@ -5,7 +5,7 @@ const Politician = ({ name, office, division, party, website, phone, email, phot
   let contactPhone= (<div></div>);
   let contactEmail = (<div></div>);
 
-  if (website) contactWebsite = (<h4 className="contact" ><span className='subheader'>Website:</span> <a href={website}> &ensp; &emsp; &emsp; &nbsp;{website}</a></h4>);
+  if (website) contactWebsite = (<h4 className="contact" ><span className='subheader'>Website:</span> &emsp; <a href={website}> {website}</a></h4>);
   if (phone) contactPhone = (<h4 className="contact" ><span className='subheader'>Phone:</span>  &emsp; &nbsp; &nbsp; {phone}</h4>);
   if (email) contactEmail = (<h4 className="contact" ><span className='subheader'>Email:</span> &emsp; &emsp; {email}</h4>);
 
@@ -21,6 +21,7 @@ const Politician = ({ name, office, division, party, website, phone, email, phot
             {contactWebsite}
             {contactPhone}
             {contactEmail}
+        <p>See this politician's <a href={`https://www.google.com/search?q=${name}%20scandals`} target="_blank" rel="noopener noreferrer">scandals</a> and <a href={`https://www.opensecrets.org/search?q=${name}`} target="_blank" rel="noopener noreferrer">donors</a>.</p>
       </div>
     </div>
   )
