@@ -20,10 +20,6 @@
     "url": "https://github.com/ourvote/ourvote/issues"
   },
   "homepage": "https://github.com/ourvote/ourvote#readme",
-  "jest": {
-    "globalSetup": "./jest-setup.js",
-    "globalTeardown": "./jest-teardown.js"
-  },
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.8",
