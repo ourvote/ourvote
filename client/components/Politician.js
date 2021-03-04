@@ -5,9 +5,9 @@ const Politician = ({ name, office, division, party, website, phone, email, phot
   let contactPhone= (<div></div>);
   let contactEmail = (<div></div>);
 
-  if (website) contactWebsite = (<h4 className="contact" ><span className='header'>Website:</span> <a href={website}> &emsp; &emsp; &nbsp;{website}</a></h4>);
-  if (phone) contactPhone = (<h4 className="contact" ><span className='header'>Phone:</span> &emsp; &emsp; &ensp; &nbsp; {phone}</h4>);
-  if (email) contactEmail = (<h4 className="contact" ><span className='header'>Email:</span> &emsp; &emsp; &ensp; &nbsp; {email}</h4>);
+  if (website) contactWebsite = (<h4 className="contact" ><span className='subheader'>Website:</span> <a href={website}> &ensp; &emsp; &emsp; &nbsp;{website}</a></h4>);
+  if (phone) contactPhone = (<h4 className="contact" ><span className='subheader'>Phone:</span> &ensp; &emsp; &emsp; &ensp; &nbsp; {phone}</h4>);
+  if (email) contactEmail = (<h4 className="contact" ><span className='subheader'>Email:</span> &ensp; &emsp; &emsp; &ensp; &nbsp; {email}</h4>);
 
 
   return (
@@ -16,8 +16,8 @@ const Politician = ({ name, office, division, party, website, phone, email, phot
       <div className='politicianStats'>
         <h2 className="politicianName"><span className='header'>Name:</span> &emsp; &nbsp; {name}</h2>
         <h2 className="office" ><span className='header'>Office:</span> &ensp;  {office}</h2>
-        <h3 className="division"><span className='header'>Division:</span> &ensp; {division}</h3>
-        <h3 className="party" ><span className='header'>Party:</span> &emsp; &emsp; {party}</h3>
+        <h3 className="division"><span className='subheader'>Division:</span> &nbsp; &ensp; &emsp;  {division}</h3>
+        <h3 className="party" ><span className='subheader'>Party:</span> &emsp; &emsp; &emsp;  {party}</h3>
             {contactWebsite}
             {contactPhone}
             {contactEmail}
