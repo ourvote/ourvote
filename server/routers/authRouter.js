@@ -1,4 +1,5 @@
 const express = require('express');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 
@@ -18,9 +19,9 @@ router.get('/google', (req, res) => {
 });
 
 //auth with google
-router.post('/google', (req, res) => {
-  console.log('req.body: ', req.body);
-});
+router.post('/google', 
+  authController.fetchGoogle,
+);
 
 // auth with facebook
 router.get('/facebook', (req, res) => {
