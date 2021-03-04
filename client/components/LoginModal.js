@@ -26,6 +26,17 @@ const LoginModal = () => {
       payload: true
     });
     closeModal();
+    const { access_token } = response;
+    console.log(access_token);
+    fetch('/users/google', {
+      method: 'POST',
+      body: JSON.stringify({
+        access_token
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(data => console.log('data: ', data));
   };
 
   const onLoginFail = (method, response) => {
