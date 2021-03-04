@@ -17,6 +17,11 @@ router.get('/google', (req, res) => {
   // handle with passport
 });
 
+//auth with google
+router.post('/google', (req, res) => {
+  console.log('req.body: ', req.body);
+});
+
 // auth with facebook
 router.get('/facebook', (req, res) => {
   // handle with passport
