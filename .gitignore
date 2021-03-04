@@ -2,3 +2,4 @@
 .env
 build/
 client/components/social-config.js
+draft.sql
