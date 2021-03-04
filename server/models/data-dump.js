@@ -32,7 +32,6 @@ const assembleSql = (obj) => {
  return str;
 }
 
-
 const civicKey = 'AIzaSyAxaluH_KPljnz_Sj2QjajtpS_iFSZbxJY'; //civicInfo
 const govKey = 'XQCd43rhRd1uncpfnaqnN75XdE2obNI9pVpYOVyT'; //api.data.gov
 const congressKey = 'iIIQ7PZtABCsnlm6ac2pBteEqSbKuaMz0W3ja8jT'; //propublica
