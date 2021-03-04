@@ -3,6 +3,12 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
+router.get('/fetch',
+  authController.fetchData,
+  (req, res, next) => {
+    console.log('so this line isn\'t empty');
+  });
+
 // auth login
 router.get('/login', (req, res) => {
   (req, res) => console.log('Hi from GET /login');
@@ -21,6 +27,7 @@ router.get('/google', (req, res) => {
 //auth with google
 router.post('/google', 
   authController.fetchGoogle,
+  authController.postData,
 );
 
 // auth with facebook
