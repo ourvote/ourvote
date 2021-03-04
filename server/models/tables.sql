@@ -1,6 +1,4 @@
-CREATE TYPE party AS ENUM (
-  'Democrat', 'Republican', 'Independent', 'Green', 'Libertarian', 'Other'
-);
+DROP TABLE IF EXISTS users, registrations, elections, roles, donors, politicians, pols_roles, donations, candidates;
 
 CREATE TABLE public.users (
   _id serial NOT NULL,
@@ -48,13 +46,12 @@ CREATE TABLE public.donors (
 );
 
 
-
 CREATE TABLE public.politicians (
   _id serial NOT NULL,
   name text NOT NULL UNIQUE,
   office text NOT NULL,
-  date_elected date,
   division text NOT NULL,
+  date_elected date,
   party text,
   website text,
   phone text,
@@ -97,17 +94,3 @@ CREATE TABLE public.candidates (
   PRIMARY KEY (_id),
   FOREIGN KEY (election_id) REFERENCES elections (_id)
 );
-
--- how to avoid inserting duplicate politician records
--- this approach requires that the name field have a UNIQUE constraint
-INSERT INTO politicians
-VALUES
-  -- list of values
-ON CONFLICT ON CONSTRAINT politicians_name_key
-DO NOTHING;
--- this approach is the same as above, just more simply written. Still requires UNIQUE constraint
-INSERT INTO politicians
-VALUES
-  -- list of values
-ON CONFLICT (name)
-DO NOTHING;

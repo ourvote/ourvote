@@ -18,9 +18,10 @@ const Politician = ({ name, office, division, party, website, phone, email, phot
         <h2 className="office" >Office: {office}</h2>
         <h3 className="division" >Division: {division}</h3>
         <h3 className="party" >Political Party: {party}</h3>
-            {contactWebsite}
-            {contactPhone}
-            {contactEmail}
+        {contactWebsite}
+        {contactPhone}
+        {contactEmail}
+        <p>See this politician's <a href={`https://www.google.com/search?q=${name}%20scandals`} target="_blank" rel="noopener noreferrer">scandals</a> and <a href={`https://www.opensecrets.org/search?q=${name}`} target="_blank" rel="noopener noreferrer">donors</a>.</p>
       </div>
     </div>
   )
