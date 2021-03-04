@@ -23,6 +23,10 @@ router.post('/google',
   authController.fetchGoogle,
   authController.postData,
   authController.fetchDbData,
+  (req, res, next) => {
+    res.status(200).send(res.locals.userInfo)
+    next();
+  }
 );
 
 // auth with facebook

@@ -7,14 +7,6 @@ const UserProfile = () => {
   const [address, setAddress] = useState(null);
   const [status, setStatus] = useState(null);
   const [party, setParty] = useState(null);
-  const [userData, setData] = useState({
-    name: homeState.userData.name,
-    address: homeState.userData.address,
-    regStatus: homeState.userData.regStatus,
-    party: homeState.userData.party,
-    username: homeState.userData.username,
-    password: homeState.userData.password,
-  })
 
   function logOut(){
     homeDispatch({
@@ -36,17 +28,30 @@ const UserProfile = () => {
     setParty(e.target.value);
   }
 
+  function getUserFromState(){
+    const userObj = {
+      name: homeState.userData.name,
+      address: homeState.userData.address,
+      regStatus: homeState.userData.regStatus,
+      party: homeState.userData.party,
+      username: homeState.userData.username,
+      password: homeState.userData.password,
+    }
+    return userObj;
+  }
+
   function submitData(){
-    const tempData = userData;
-    tempData.name = name;
-    tempData.address = address;
-    tempData.regStatus = status;
-    tempData.party = party;
-    setData(tempData);
+    const tempData = getUserFromState();
+    if(name) tempData.name = name;
+    if(address) tempData.address = address;
+    if(status) tempData.regStatus = status;
+    if(party) tempData.party = party;
+    console.log('before home dispatch')
     homeDispatch({
       type: 'UPDATE_USER',
       payload: tempData
     });
+    console.log('after home dispatch')
   }
 
   return (
