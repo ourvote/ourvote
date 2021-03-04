@@ -1,7 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+$Bungee: 'Bungee', cursive;
+
 .aboutUs {
   font-family: $Lato;
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 20%;
+  justify-items: center;
+  margin-top: 8%;
+  line-height: 5rem;
+
+  h1, h3 {
+    font-family: $Bungee;
+  }
+
+  h1 {
+    font-size: 250%;
+  }
+
+  h3 {
+    font-size: 175%;
+  }
+
+  p {
+    font-size: 110%;
+  }
+
+  .aboutBanner {
+    background-color: rgba(247,23,53, 0.4);
+    padding: 10%;
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+    border-radius: 28px;
+  }
+
 }
