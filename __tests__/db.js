@@ -1,9 +1,10 @@
-const fs = require('fs');
-const path = require('path');
 const db = require('../server/models/model.js');
-const app = require('../server/server.js');
-
-// nodemon -r dotenv/config server/server.js &
+const { searchController, helpers } = require('../server/controllers/searchController.js')
+const {
+  escapeQuotes,
+  arrayToSqlList,
+  assembleSql
+} = helpers;
 
 /*
 test database in Elephant
@@ -22,11 +23,12 @@ describe('Database unit tests', () => {
     if (process.env.NODE_ENV !== 'test') {
       console.log(`Must run tests in a testing environment only. Current environment: ${process.env.NODE_ENV}. Aborting...`);
     }
-    else console.log(`Running unit tests on database in a secure testing environment. NODE_ENV: ${process.env.NODE_ENV}`);
+    else console.log(`Running unit tests on database in ${process.env.NODE_ENV} environment.`);
 
-    // db.query('TRUNCATE politicians RESTART IDENTITY CASCADE', (error, response) => {
-    //   if (error) console.log('Problem truncating test db:', error);
-    // });
+    db.query('TRUNCATE politicians RESTART IDENTITY CASCADE', (error, response) => {
+      if (error) console.log('Problem truncating test db:', error);
+      console.log('Truncated mock db');
+    });
 
     /*
       TRUNCATE: empties all data from the tables listed
@@ -35,10 +37,12 @@ describe('Database unit tests', () => {
     */
   })
 
-  // TODO: how to properly close the server. app.close() only prevents new connections; it doesn't terminate the current ones. Look into packages such as http-terminator. Look into terminal command "losf -i 3000"
-  // afterAll(() => {
-  //   app.close();
-  // });
+  // TODO: how to properly close the server. app.close() only prevents new connections; it doesn't terminate the current ones. Look into packages such as http-terminator. Look into terminal commands.
+  afterAll(() => {
+    // app.close();
+    // todo: make port 3000 gracefully exit its process
+    db.end();
+  });
 
   it('Test database should have the right tables', () => {
     const query = `SELECT table_name
@@ -54,38 +58,55 @@ describe('Database unit tests', () => {
     });
   })
 
-  // before all
-    // initialize a locally hosted mock database
-    // get the real tables from the real database (but not their data)
-    // write them to a .sql file in this folder
-    // execute that file to add those tables and columns to the mock database
+  describe('Helper functions', () => {
+    describe('escapeQuotes', () => {
+      xit('', () => {
+     
+      })
+    });
+
+    describe('arrayToSqlList', () => {
+      it('should escape apostrophes within the string by inserting an extra apostrophe', () => {
+        const result = escapeQuotes("Commonwealth's Attorney");
+
+        expect(result).toEqual("Commonwealth''s Attorney");
+      })
+    });
+
+    describe('assembleSql', () => {
+      xit('', () => {
+     
+      })
+    });
+  })
+  
   
   describe('Politicians table', () => {
-    xit('Should be able to write perfectly shaped data', () => {
+    xit('should be able to write perfectly shaped data', () => {
       // write perfectly shaped data to the database
       // run a SELECT
       // it should return that data
     })
 
-    xit('Should be able to read from the database', () => {
+    xit('should be able to read from the database', () => {
      
     })
   
-    xit('Should prevent writing multiple records with the same name', () => {
+    xit('should increment serial _id when a new record is written', () => {
      
     })
   
-    xit('Should increment serial _id', () => {
+    xit('should obey null constraints', () => {
      
     })
-  
-    xit('', () => {
+
+    xit('should obey unique constraint on "name"', () => {
      
     })
   })
 
   describe('searchController.getAll', () => {
-    xit('Should return as many rows as exist on "politicians"', () => {
+    xit('should return as many rows as exist on "politicians"', () => {
      
     })
 
@@ -95,7 +116,15 @@ describe('Database unit tests', () => {
   })
 
   describe('searchController.upsertByAddress', () => {
-    xit('Should return as many rows as exist on "politicians"', () => {
+    xit('should query Google Civic Info API with address sent on request query', () => {
+     
+    })
+
+    xit('should return a list of politician names at res.locals.names', () => {
+     
+    })
+    
+    xit('should add politicians to database only if they are not already present', () => {
      
     })
 
@@ -103,4 +132,44 @@ describe('Database unit tests', () => {
      
     })
   })
-})
+
+  describe('searchController.getByNames', () => {
+    xit('should return a politician record for every name passed on res.locals.names', () => {
+     
+    })
+
+    xit('should return a list of politician names at res.locals.names', () => {
+     
+    })
+    
+    xit('should add politicians to database only if they are not already present', () => {
+     
+    })
+
+    xit('', () => {
+     
+    })
+  })
+
+});
+  
+/*
+  Sample JSON response from database if you select Biden:
+
+  {
+    "_id": 1,
+    "name": "Joseph R. Biden",
+    "office": "President of the United States",
+    "division": "ocd-division/country:us",
+    "date_elected": null,
+    "party": "Democratic Party",
+    "website": "https://www.whitehouse.gov/",
+    "phone": "(202) 456-1111",
+    "email": null,
+    "election_id": null,
+    "photo": null,
+    "fec": null,
+    "crp": null
+}
+
+*/

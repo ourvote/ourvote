@@ -135,4 +135,11 @@ searchController.getByNames = (req, res, next) => {
   });
 };
 
-module.exports = searchController;
+module.exports = { 
+  searchController, 
+  helpers: {
+    escapeQuotes,
+    arrayToSqlList,
+    assembleSql 
+  },
+};
