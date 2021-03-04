@@ -1,22 +1,10 @@
 const express = require('express');
 const app = express();
-// const cors = require('cors');
-// const cors_proxy = require('cors-anywhere');
 const path = require('path');
-const authRouter = require('./routers/auth-router');
+const authRouter = require('./routers/authRouter');
 const searchRouter = require('./routers/search-router');
 
 const PORT = process.env.PORT || 3000;
-
-// app.use(cors({ credentials: true }));
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header(
-//     'Access-Control-Allow-Headers',
-//     'Origin, X-Requested-With, Content-Type, Accept'
-//   );
-//   next();
-// });
 
 app.use(express.json());
 
@@ -37,7 +25,8 @@ app.use((err, req, res, next) => {
   };
   error.message = err.message;
   if (err.status) error.status = err.status;
-
+  console.log(req.url);
+  console.log(req.method);
   console.log('SERVER ERROR: ', error.message);
   res.status(error.status).send(error.message);
 });
