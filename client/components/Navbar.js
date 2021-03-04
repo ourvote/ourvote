@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import LoginModal from './LoginModal';
 import { HomeContext } from '../state/contexts';
+import UserProfile from './UserProfile';
 
 const Navbar = () => {
   const { homeDispatch, homeState } = useContext(HomeContext);
