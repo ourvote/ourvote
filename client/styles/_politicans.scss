@@ -1,17 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 $Lato: 'Lato', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+$Bungee: 'Bungee', cursive;
+
+
+
+.politicianContainer {
+  padding-top: 10%;
+}
 
 
   .politician {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: 0.4fr 0.6fr;
     grid-template-rows: 1fr;
     gap: 0px 0px;
     grid-template-areas:
       "politicianImg politicianStats";
     font-family: $Lato;
     padding: 4%;
-    // justify-items: center;
+    margin-top: 5%;
+    border-radius: 16px;
+    background-color: rgba(0,166,251, 0.4);
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+
+
 
     .politicianImg {
       grid-area: 'politicianImg';
@@ -29,7 +42,13 @@ $Lato: 'Lato', sans-serif;
     }
 
     .politicianStats {
+      margin-top: 5%;
       grid-area: 'politicianStats';
-      line-height: 0.5rem;
+      line-height: 3rem;
+      overflow-wrap: break-word;
+
+      .header {
+        font-family: $Bungee;
+      }
     }
   }

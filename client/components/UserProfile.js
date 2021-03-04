@@ -56,35 +56,35 @@ const UserProfile = () => {
           Name:
           {homeState.userData.name ? 
            homeState.userData.name : 
-          <input type="text" name="name" placeholder="your name" onChange = {handleName}></input>}
-          <button id="saveName" onClick = {submitData}> Save </button>
+          <input className='userInput' type="text" name="name" placeholder="your name" onChange = {handleName}></input>}
+          <button className='userButton' id="saveName" onClick = {submitData}> Save </button>
         </label>
       </form>
       <form id="userAddress">
         <label>
           Address:
-          {homeState.userData.address ? homeState.userData.address : <input type="text" name="address" placeholder="your address" onChange = {handleAddress}></input>}
-          <button id="saveAddress" onClick={submitData}> Save </button>
+          {homeState.userData.address ? homeState.userData.address : <input className='userInput' type="text" name="address" placeholder="your address" onChange = {handleAddress}></input>}
+          <button className='userButton' id="saveAddress" onClick={submitData}> Save </button>
         </label>
       </form>
       <form id="userStatus">
         <label>
           Registration:
-          {homeState.userData.regStatus ? homeState.userData.regStatus : <input type="text" name="regStatus" placeholder="your voter registration status" onChange = {handleStatus}></input>}
-          <button id="saveStatus" onClick={submitData}> Save </button>
+          {homeState.userData.regStatus ? homeState.userData.regStatus : <input className='userInput' type="text" name="regStatus" placeholder="your voter registration status" onChange = {handleStatus}></input>}
+          <button className='userButton' id="saveStatus" onClick={submitData}> Save </button>
         </label>
       </form>
       <form id="userParty">
         <label>
           Party:
-          {homeState.userData.party ? homeState.userData.party : <input type="text" name="regStatus" placeholder="the party you're registered for" onChange = {handleParty}></input>}
-          <button id="saveParty" onClick={submitData}> Save </button>
+          {homeState.userData.party ? homeState.userData.party : <input className='userInput' type="text" name="regStatus" placeholder="the party you're registered for" onChange = {handleParty}></input>}
+          <button className='userButton' id="saveParty" onClick={submitData}> Save </button>
         </label>
       </form>
-      <button id="saveAll" onClick={submitData}>
+      <button  className='userButton' id="saveAll" onClick={submitData}>
         Save All
       </button>
-      <button id="logOut" onClick={logOut}>
+      <button  className='userButton' id="logOut" onClick={logOut}>
         Log Out
       </button>
     </div>

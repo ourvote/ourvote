@@ -19,6 +19,7 @@ const SearchBar = () => {
     if (!address) return;
     const addressAscii = encodeCode(address);
 
+
     fetch('/politicians/?address=' + addressAscii, {
       method: 'PUT',
       headers: {
@@ -27,11 +28,11 @@ const SearchBar = () => {
     })
     .then(res => res.json())
     .then(data => {
-      setAddress('');
       homeDispatch({
         type: 'OPEN_SEARCH_RESULTS',
         payload: data
       });
+      setAddress('');
     })
     .catch(err => console.error('ERROR getting politicians:', err));
   }
@@ -41,14 +42,17 @@ const SearchBar = () => {
       <div className="formContainer">
         <form className="form"
         onSubmit={onSubmit}>
-          <label>Find your representatives:
+          <label className="label">
             <input className="formField"
             type="text"
             id="search"
+            value={address}
             placeholder="Home address..."
             onChange={onChange} />
           </label>
-          <a className="searchSubmit" onClick={onSubmit}><span>Search</span>
+          <a className="searchSubmit" onClick={onSubmit}><span>
+            Find Your Reps
+          </span>
             <svg width="13px" height="10px" viewBox="0 0 13 10">
             <path d="M1,5 L11,5"></path>
             <polyline points="8 1 12 5 8 9"></polyline>
