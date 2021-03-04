@@ -32,8 +32,10 @@ const assembleSql = (obj) => {
  return str;
 }
 
-
-const civicKey = 'AIzaSyAxaluH_KPljnz_Sj2QjajtpS_iFSZbxJY';
+const civicKey = 'AIzaSyAxaluH_KPljnz_Sj2QjajtpS_iFSZbxJY'; //civicInfo
+const govKey = 'XQCd43rhRd1uncpfnaqnN75XdE2obNI9pVpYOVyT'; //api.data.gov
+const congressKey = 'iIIQ7PZtABCsnlm6ac2pBteEqSbKuaMz0W3ja8jT'; //propublica
+const ciceroKey = '4850765344a02ae2d5b0e20602ca8186a97f251b';
 let address = '68 White St 5th floor, New York, NY 10013' // Codesmith office 
 encodedAddress = encodeCode(address);
 const params = {
@@ -44,6 +46,10 @@ const paramString = constructURI(params);
 
 let dataReturn = ''
 
+fetch('https://api.maplight.org/maplight-api/fec/contributions?candidate_name=Hillary Clinton')
+  .then(res => res.json())
+  .then(data => console.log('data.data: ', data.data))
+  .catch(err => console.error('Error querying Google Civic Info API.', err));
 /*
 UPDATE  politicians
 SET     fec = 'P80000722'
@@ -51,7 +57,7 @@ WHERE   name = 'Joseph R. Biden';
 Kamala D. Harris
  Charles E. Schumer
  Kirsten E. Gillibrand
- Jerrold Nadler +
+ Jerrold Nadler + cid: H2NY17071
  Andrew M. Cuomo
  Kathleen C. Hochul
  Brian P. Kavanagh
@@ -60,40 +66,45 @@ Kamala D. Harris
  Thomas P. DiNapoli
  Cyrus R. Vance, Jr.
  Gale Brewer
- Bill de Blasio + 
+ Bill de Blasio + cid: P00012054
  Scott M. Stringer
  Jumaane D. Williams
- Margaret S. Chin
- Joseph R. Biden +
+ Margaret S. Chin 
+ Joseph R. Biden + cid: P80000722
+
+ Kamala D. Harris - P00009423
+ Charles E. Schumer - S8NY00082
+ Kirsten E. Gillibrand - P00009290
+ Kathleen C. Hochul - H2NY00036
+ Deborah Glick - H8NY08077
 */
 
+// fetch('https://www.googleapis.com/civicinfo/v2/representatives?' + paramString)
+//   .then(res => res.json())
+//   .then(data => {
+//     dataReturn = assembleSql(data)
 
-/*
-fetch('https://www.googleapis.com/civicinfo/v2/representatives?' + paramString)
-  .then(res => res.json())
-  .then(data => {
-    dataReturn = assembleSql(data)
-
-    const query = `INSERT INTO politicians (
-      office, 
-      division, 
-      name,   
-      party,  
-      photo,  
-      website,
-      phone,
-      email
-    ) 
-    VALUES
-    ` + dataReturn + 'RETURNING *;'
+//     const query = `INSERT INTO politicians (
+//       office, 
+//       division, 
+//       name,   
+//       party,  
+//       photo,  
+//       website,
+//       phone,
+//       email
+//     ) 
+//     VALUES
+//     ` + dataReturn + 'RETURNING *;'
   
-    db.query(query, (err, res) => {
-      if (err) console.log('ERROR performing data insertion.', err);
-      else console.log('Result of data insertion:', res.rows);
-    })
-  })
-  .catch(err => console.error('Error querying Google Civic Info API.', err));
-*/
+//     db.query(query, (err, res) => {
+//       if (err) console.log('ERROR performing data insertion.', err);
+//       else console.log('Result of data insertion:', res.rows);
+//     })
+//   })
+//   .catch(err => console.error('Error querying Google Civic Info API.', err));
+
+
 
 
 /*

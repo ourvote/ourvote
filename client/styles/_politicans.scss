@@ -12,7 +12,7 @@ $Bungee: 'Bungee', cursive;
 
   .politician {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: 0.4fr 0.6fr;
     grid-template-rows: 1fr;
     gap: 0px 0px;
     grid-template-areas:
@@ -44,7 +44,7 @@ $Bungee: 'Bungee', cursive;
     .politicianStats {
       margin-top: 5%;
       grid-area: 'politicianStats';
-      line-height: 1rem;
+      line-height: 3rem;
       overflow-wrap: break-word;
 
       .header {

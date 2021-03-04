@@ -3,7 +3,7 @@ import LoginModal from './LoginModal';
 import { HomeContext } from '../state/contexts';
 
 const Navbar = () => {
-  const { homeDispatch } = useContext(HomeContext);
+  const { homeDispatch, homeState } = useContext(HomeContext);
   const returnHome = () => {
     homeDispatch({
       type: 'OPEN_HOME_PAGE',
@@ -25,7 +25,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className='right-nav'>
-          <LoginModal />
+          {homeState.loggedIn ? <UserProfile/> : <LoginModal />}
       </div>
     </header>
   )

@@ -8,7 +8,10 @@ $Lato: 'Lato', sans-serif;
   justify-content: space-between;
   color: #F71735;
   font-family: $Lato;
-  font-size: 145%;
+  font-size: 100%;
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
 
   a {
     color: #F71735;
@@ -25,7 +28,7 @@ $Lato: 'Lato', sans-serif;
   }
 
   .nav-logo {
-    padding: 1.5em;
+    //padding: 1.5em;
 
     :hover {
       cursor: pointer;

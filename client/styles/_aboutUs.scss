@@ -7,6 +7,7 @@ $Bungee: 'Bungee', cursive;
   flex-direction: column;
   text-align: center;
   margin-top: 8%;
+  line-height: 5rem;
 
   h1, h3 {
     font-family: $Bungee;
@@ -21,12 +22,13 @@ $Bungee: 'Bungee', cursive;
   }
 
   p {
-    font-size: 200%;
+    font-size: 110%;
   }
 
   .aboutBanner {
     background-color: rgba(247,23,53, 0.4);
     padding: 10%;
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
   }
 
 }
