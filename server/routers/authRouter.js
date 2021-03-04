@@ -4,7 +4,7 @@ const router = express.Router();
 
 // auth login
 router.get('/login', (req, res) => {
-
+  (req, res) => console.log('Hi from GET /login');
 });
 
 // auth logout

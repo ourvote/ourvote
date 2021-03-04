@@ -22,12 +22,12 @@ module.exports = {
       {
         test: /\.(t|j)sx?$/,
         exclude: /node_modules/,
-        use: ['ts-loader', {
+        use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
-        }],
+        },
       },
       {
         test: /.(css|scss)$/,
@@ -36,20 +36,15 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'client/index.html',
-      filename: 'index.html',
-      inject: 'body'
-    }),
-  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
     hot: true,
     proxy: {
-      '/': 'http://localhost:3000/',
+      '/': 'http://localhost:3000',
+      '/*': 'http://localhost:3000',
+      '/politicians': 'http://localhost:3000',
     },
     publicPath: '/build',
   },
