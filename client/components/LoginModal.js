@@ -20,6 +20,7 @@ const LoginModal = () => {
   };
 
   const onLoginSuccess = (method, response) => {
+    const userDbData = null;
     console.log("logged successfully with " + method);
     homeDispatch({
       type: 'CHANGE_LOGIN',
@@ -27,7 +28,6 @@ const LoginModal = () => {
     });
     closeModal();
     const { access_token } = response;
-    console.log(access_token);
     fetch('/users/google', {
       method: 'POST',
       body: JSON.stringify({
@@ -36,8 +36,19 @@ const LoginModal = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(data => console.log('data: ', data));
+    })
+    .then(data => data.json())
+    .then(data => addUserToState(data))
+    .catch(err => console.log('err: ', err))
   };
+
+  const addUserToState = (userObj) => {
+    homeDispatch({
+      type: 'UPDATE_USER',
+      payload: userObj
+    });
+    console.log('updated user');
+  }
 
   const onLoginFail = (method, response) => {
     console.log("logging failed with " + method);
