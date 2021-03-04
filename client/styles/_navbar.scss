@@ -8,19 +8,21 @@ $Lato: 'Lato', sans-serif;
   justify-content: space-between;
   color: #F71735;
   font-family: $Lato;
-  font-size: 145%;
+  font-size: 100%;
+
+  a {
+    color: #F71735;
+    text-decoration: none;
+  }
 
   #logo {
     height: 4em;
   }
 
-  .left-nav, .right-nav {
-    display: flex;
-    flex-direction: row;
-  }
+
 
   .nav-logo {
-    padding: 1.5em;
+    //padding: 1.5em;
 
     :hover {
       cursor: pointer;
@@ -29,6 +31,7 @@ $Lato: 'Lato', sans-serif;
 
   .nav-item {
     padding: 1.5em;
+    font-weight: bold;
 
     :hover {
       cursor: pointer;

@@ -2,11 +2,10 @@ $color: #111;
 $primary: #00a6fb;
 
 .formContainer {
-  margin-top: 8%;
+  margin-top: 6%;
   width: 100%;
   font-family: $Lato;
   font-size: 130%;
-
 
 
 .form {
@@ -17,10 +16,15 @@ $primary: #00a6fb;
     padding: 19px 22px;
     border-radius: 28px;
     width: 35%;
-    margin-bottom: 8px;
     border: 1px solid lightgray;
     position: relative;
-   }
+    transition: box-shadow .3s;
+
+    &:hover {
+      cursor: text;
+      box-shadow: 0 0 11px rgba(33,33,33,.2);
+    }
+  }
  }
 }
 
@@ -32,7 +36,7 @@ $primary: #00a6fb;
      &:before {
        content: "";
        position: absolute;
-       top: 0;
+       top: 20px;
        left: 0;
        display: block;
        border-radius: 28px;
@@ -63,6 +67,7 @@ $primary: #00a6fb;
        transition: all .3s ease;
       }
      &:hover {
+       cursor: pointer;
        &:before {
          width: 100%;
          background: rgba($primary,1);
