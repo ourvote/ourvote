@@ -4,6 +4,8 @@ import { HomeContext } from '../state/contexts';
 const SearchBar = () => {
   const { homeDispatch } = useContext(HomeContext);
   const [address, setAddress] = useState('');
+  const [target, setTarget] = useState('');
+
 
   const onChange = (e) => {
     setAddress(e.target.value);
